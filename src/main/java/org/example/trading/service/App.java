@@ -1,6 +1,7 @@
-package org.example.trading;
+package org.example.trading.service;
 
 import org.example.algo.Algo;
+import org.example.trading.service.SignalHandler;
 
 /**
  * This is your team’s code and should be changed as you see fit.

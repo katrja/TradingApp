@@ -1,4 +1,4 @@
-package org.example.trading;
+package org.example.trading.service;
 
 /**
  * This is an upcall from our trading system, and we cannot change it.
