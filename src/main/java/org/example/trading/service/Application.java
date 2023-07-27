@@ -1,16 +1,23 @@
 package org.example.trading.service;
 
 import org.example.algo.Algo;
-import org.example.trading.service.SignalHandler;
+import org.example.trading.signal.SignalAlgorithmFactory;
+import org.example.trading.signal.algorithm.SignalAlgorithm;
 
 /**
  * This is your team’s code and should be changed as you see fit.
  */
-class Application implements SignalHandler {
+public class Application implements SignalHandler {
 
   public void handleSignal(int signal) {
-    Algo algo = new Algo();
-    switch (signal) {
+
+    SignalAlgorithmFactory factory = new SignalAlgorithmFactory();
+    SignalAlgorithm algorithm = factory.getHandledSignal(signal);
+    algorithm.getAlgorythm().doAlgo();
+
+   // Algo algo = new Algo();
+
+   /* switch (signal) {
       case 1:
         algo.setUp();
         algo.setAlgoParam(1, 60);
@@ -33,5 +40,7 @@ class Application implements SignalHandler {
         break;
     }
     algo.doAlgo();
+*/
+
   }
 }
