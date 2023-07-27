@@ -1,2 +1,10 @@
-package org.example.trading;public class SpringApplication {
+package org.example.trading;
+
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class SpringApplication {
+    public static void main(String[] args) {
+      org.springframework.boot.SpringApplication.run(SpringApplication.class, args);
+    }
 }

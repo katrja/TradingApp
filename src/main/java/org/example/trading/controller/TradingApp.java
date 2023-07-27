@@ -1,32 +1,26 @@
 package org.example.trading.controller;
 
-import java.io.IOException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import org.example.trading.service.Application;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-public class TradingApp extends HttpServlet {
+@RestController
+public class TradingApp {
 
+  @Autowired
+  Application tragingApplication;
+	
   /**
    * POST endpoint to receive signal
    */
-  @Override
-  protected void doPost(HttpServletRequest request,
-      HttpServletResponse response) throws IOException {
-    try {
-      Integer signal = (Integer) request.getAttribute("signal");
-      receiveSignal(signal);
+  @PostMapping("/signal")
+  protected void receiveSignal(@RequestBody Integer signal) {
 
-    } catch (NullPointerException ex) {
-      response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Signal parameter should be integer");
-    }
+    tragingApplication.handleSignal(signal);
+
 }
-
-  /**
-   * Handle incoming signal
-   * @param signal Integer
-   */
-  private void receiveSignal(Integer signal) {
-   //TODO
-  }
 }
