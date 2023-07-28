@@ -10,7 +10,11 @@ import org.example.trading.signal.algorithm.SignalAlgorithm3;
 
 /**
  * Factory class to provide algorithms for handling known signals.
- * For handling new signal, add new item in signalHandlers collection.
+ * In order to add a new signal handling, extend signalHandlers collection.
+ *
+ * signalHandlers - collection that maps signal code to SignalAlgorithm object that
+ * knows how to handle the signal.
+ *
  */
 public class SignalAlgorithmFactory {
 
@@ -26,11 +30,21 @@ public class SignalAlgorithmFactory {
     SignalAlgorithm sa3 = new SignalAlgorithm3();
     signalHandlers.put(sa3.getHandledSignal(), sa3);
 
-    SignalAlgorithm saDeafult = new DefaultSignalAlgorithm();
-    signalHandlers.put(saDeafult.getHandledSignal(), saDeafult);
+    SignalAlgorithm saDefault = new DefaultSignalAlgorithm();
+    signalHandlers.put(saDefault.getHandledSignal(), saDefault);
   }
 
+  /**
+   * @param signal int
+   * @return SignalAlgorithm - object that knows algorithm for the incoming signal.
+   * If system doesn't know how to handle incoming code, default handler will be used
+   * (default code is 0).
+   */
   public SignalAlgorithm getHandledSignal(int signal) {
-    return signalHandlers.get(signal);
+    if (signalHandlers.containsKey(signal) ){
+      return signalHandlers.get(signal);
+    } else {
+      return signalHandlers.get(0);
+    }
   }
 }
