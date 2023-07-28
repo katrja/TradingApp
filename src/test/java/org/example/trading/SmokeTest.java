@@ -1,7 +1,7 @@
 package org.example.trading;
 
 import org.example.trading.controller.TradingApp;
-import org.example.trading.service.SignalHandler;
+import org.example.algo.SignalHandler;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -18,7 +18,6 @@ public class SignalAlgorithm1 implements SignalAlgorithm {
 
   @Override
   public Algo getAlgorithm() {
-    //Algo algo = new Algo();
     algo.setUp();
     algo.setAlgoParam(1, 60);
     algo.performCalc();

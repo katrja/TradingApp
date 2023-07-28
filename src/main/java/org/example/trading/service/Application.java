@@ -1,5 +1,6 @@
 package org.example.trading.service;
 
+import org.example.algo.SignalHandler;
 import org.example.trading.signal.SignalAlgorithmFactory;
 import org.example.trading.signal.algorithm.SignalAlgorithm;
 import org.springframework.stereotype.Service;
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class Application implements SignalHandler {
 
-  protected SignalAlgorithmFactory factory;
+  SignalAlgorithmFactory factory;
 
   public Application() {
     this.factory = new SignalAlgorithmFactory();

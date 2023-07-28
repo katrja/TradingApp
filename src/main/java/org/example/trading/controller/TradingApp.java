@@ -1,7 +1,6 @@
 package org.example.trading.controller;
 
-import org.example.trading.service.Application;
-import org.example.trading.service.SignalHandler;
+import org.example.algo.SignalHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
