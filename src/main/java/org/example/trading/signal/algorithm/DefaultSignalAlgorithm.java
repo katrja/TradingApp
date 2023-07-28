@@ -4,6 +4,12 @@ import org.example.algo.Algo;
 
 public class DefaultSignalAlgorithm implements SignalAlgorithm {
 
+  Algo algo;
+
+  public DefaultSignalAlgorithm() {
+    this.algo = new Algo();
+  }
+
   @Override
   public int getHandledSignal() {
     return 0;
@@ -11,7 +17,6 @@ public class DefaultSignalAlgorithm implements SignalAlgorithm {
 
   @Override
   public Algo getAlgorithm() {
-    Algo algo = new Algo();
     algo.cancelTrades();
     return algo;
   }

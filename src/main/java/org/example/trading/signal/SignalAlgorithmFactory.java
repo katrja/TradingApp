@@ -41,7 +41,7 @@ public class SignalAlgorithmFactory {
    * (default code is 0).
    */
   public SignalAlgorithm getHandledSignal(int signal) {
-    if (signalHandlers.containsKey(signal) ){
+    if (signalHandlers.containsKey(signal)) {
       return signalHandlers.get(signal);
     } else {
       return signalHandlers.get(0);

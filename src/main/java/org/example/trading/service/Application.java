@@ -10,13 +10,17 @@ import org.springframework.stereotype.Service;
 @Service
 public class Application implements SignalHandler {
 
+  protected SignalAlgorithmFactory factory;
+
+  public Application() {
+    this.factory = new SignalAlgorithmFactory();
+  }
   /**
    * Main method that should be called when new signal received.
-   * Based on the signal code, matching handling algorithm will be done.
+   * Based on the signal code, matching handling algorithm will be called.
    * @param signal int - signal code.
    */
   public void handleSignal(int signal) {
-    SignalAlgorithmFactory factory = new SignalAlgorithmFactory();
     SignalAlgorithm algorithm = factory.getHandledSignal(signal);
     algorithm.getAlgorithm().doAlgo();
   }

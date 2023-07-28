@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TradingApp {
 
   @Autowired
-  SignalHandler tragingApplication;
+  SignalHandler signalHandler;
 	
   /**
    * POST endpoint to receive and handle signals.
@@ -22,6 +22,6 @@ public class TradingApp {
    */
   @PostMapping("/signal")
   protected void receiveSignal(@RequestBody Integer signal) {
-    tragingApplication.handleSignal(signal);
+    signalHandler.handleSignal(signal);
   }
 }
