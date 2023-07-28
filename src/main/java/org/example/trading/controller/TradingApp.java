@@ -1,6 +1,7 @@
 package org.example.trading.controller;
 
 import org.example.trading.service.Application;
+import org.example.trading.service.SignalHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TradingApp {
 
   @Autowired
-  Application tragingApplication;
+  SignalHandler tragingApplication;
 	
   /**
    * POST endpoint to receive and handle signals.
