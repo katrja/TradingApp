@@ -6,6 +6,5 @@ public interface SignalAlgorithm {
 
   int getHandledSignal();
 
-  Algo getAlgorythm();
-
+  Algo getAlgorithm();
 }

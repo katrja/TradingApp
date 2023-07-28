@@ -12,7 +12,7 @@ public class SignalAlgorithm1 implements SignalAlgorithm {
   }
 
   @Override
-  public Algo getAlgorythm() {
+  public Algo getAlgorithm() {
     Algo algo = new Algo();
 
     algo.setUp();

@@ -10,7 +10,7 @@ public class DefaultSignalAlgorithm implements SignalAlgorithm {
   }
 
   @Override
-  public Algo getAlgorythm() {
+  public Algo getAlgorithm() {
     Algo algo = new Algo();
     algo.cancelTrades();
     return algo;

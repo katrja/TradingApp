@@ -10,7 +10,7 @@ public class SignalAlgorithm2 implements SignalAlgorithm {
   }
 
   @Override
-  public Algo getAlgorythm() {
+  public Algo getAlgorithm() {
     Algo algo = new Algo();
     algo.reverse();
     algo.setAlgoParam(1, 80);
