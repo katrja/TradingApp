@@ -2,7 +2,6 @@ package org.example.trading.signal;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.example.trading.signal.SignalAlgorithmFactory;
 import org.example.trading.signal.algorithm.DefaultSignalAlgorithm;
 import org.example.trading.signal.algorithm.SignalAlgorithm;
 import org.example.trading.signal.algorithm.SignalAlgorithm1;
