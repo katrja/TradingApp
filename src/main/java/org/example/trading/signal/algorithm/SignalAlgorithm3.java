@@ -1,22 +1,18 @@
 package org.example.trading.signal.algorithm;
 
 import org.example.algo.Algo;
+import org.springframework.stereotype.Component;
 
+@Component
 public class SignalAlgorithm3 implements SignalAlgorithm {
 
-  Algo algo;
-
-  public SignalAlgorithm3() {
-    this.algo = new Algo();
-  }
-
   @Override
-  public int getHandledSignal() {
+  public int getSignal() {
     return 3;
   }
 
   @Override
-  public Algo getAlgorithm() {
+  public Algo composeAlgorithm(Algo algo) {
     algo.setAlgoParam(1, 90);
     algo.setAlgoParam(2, 15);
     algo.performCalc();

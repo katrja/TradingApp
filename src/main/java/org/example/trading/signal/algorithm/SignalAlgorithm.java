@@ -11,7 +11,7 @@ import org.example.algo.Algo;
  */
 public interface SignalAlgorithm {
 
-  int getHandledSignal();
+  int getSignal();
 
-  Algo getAlgorithm();
+  Algo composeAlgorithm(Algo algo);
 }
