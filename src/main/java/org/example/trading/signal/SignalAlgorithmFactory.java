@@ -1,50 +1,39 @@
 package org.example.trading.signal;
-
-import java.util.HashMap;
 import java.util.Map;
+import org.example.algo.Algo;
 import org.example.trading.signal.algorithm.DefaultSignalAlgorithm;
 import org.example.trading.signal.algorithm.SignalAlgorithm;
-import org.example.trading.signal.algorithm.SignalAlgorithm1;
-import org.example.trading.signal.algorithm.SignalAlgorithm2;
-import org.example.trading.signal.algorithm.SignalAlgorithm3;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
- * Factory class to provide algorithms for handling known signals.
- * In order to add a new signal handling, extend signalHandlers collection.
- *
- * signalHandlers - collection that maps signal code to SignalAlgorithm object that
- * knows how to handle the signal.
- *
+ * Factory class to provide algorithms for handling known signals. In order to add a new signal
+ * handling, extend signalHandlers collection. signalHandlers - collection that maps signal code to
+ * SignalAlgorithm object that knows how to handle the signal.
  */
+@Service
 public class SignalAlgorithmFactory {
 
-  private final static Map<Integer, SignalAlgorithm> signalHandlers = new HashMap();
+  private Map<Integer, SignalAlgorithm> signalAlgorithms;
 
-  public SignalAlgorithmFactory() {
-    SignalAlgorithm sa1 = new SignalAlgorithm1();
-    signalHandlers.put(sa1.getHandledSignal(), sa1);
+  @Autowired
+  private DefaultSignalAlgorithm defaultSignalAlgorithm;
 
-    SignalAlgorithm sa2 = new SignalAlgorithm2();
-    signalHandlers.put(sa2.getHandledSignal(), sa2);
-
-    SignalAlgorithm sa3 = new SignalAlgorithm3();
-    signalHandlers.put(sa3.getHandledSignal(), sa3);
-
-    SignalAlgorithm saDefault = new DefaultSignalAlgorithm();
-    signalHandlers.put(saDefault.getHandledSignal(), saDefault);
+  @Autowired
+  public SignalAlgorithmFactory(Map<Integer, SignalAlgorithm> signalAlgorithms) {
+    this.signalAlgorithms = signalAlgorithms;
   }
 
   /**
    * @param signal int
-   * @return SignalAlgorithm - object that knows algorithm for the incoming signal.
-   * If system doesn't know how to handle incoming code, default handler will be used
-   * (default code is 0).
+   * @return SignalAlgorithm - object that knows algorithm for the incoming signal. If system
+   * doesn't know how to handle incoming code, default handler will be used (default code is 0).
    */
-  public SignalAlgorithm getHandledSignal(int signal) {
-    if (signalHandlers.containsKey(signal)) {
-      return signalHandlers.get(signal);
+  public Algo createAlgorithm(Algo algo, int signal) {
+    if (signalAlgorithms.containsKey(signal)) {
+      return signalAlgorithms.get(signal).composeAlgorithm(algo);
     } else {
-      return signalHandlers.get(0);
+      return defaultSignalAlgorithm.composeAlgorithm(algo);
     }
   }
 }
