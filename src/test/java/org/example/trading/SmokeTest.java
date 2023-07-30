@@ -36,5 +36,6 @@ public class SmokeTest {
     assertThat(factory).isNotNull();
     assertThat(defaultSignalAlgorithm).isNotNull();
     assertThat(getSignalAlgorithms).isNotNull();
+    assertThat(getSignalAlgorithms.size()).isEqualTo(3);
   }
 }
