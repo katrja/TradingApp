@@ -1,10 +1,11 @@
 package org.example.trading.service;
 
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.when;
 
 import org.example.algo.Algo;
 import org.example.trading.signal.SignalAlgorithmFactory;
-import org.example.trading.signal.algorithm.SignalAlgorithm;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -15,31 +16,27 @@ import org.mockito.MockitoAnnotations;
 public class ApplicationTest {
 
   @Mock
-  SignalAlgorithmFactory asFactory;
+  private SignalAlgorithmFactory factory;
 
   @Mock
-  SignalAlgorithm signalAlgorithm;
-
-  @Mock
-  Algo algo;
+  private Algo algo;
 
   @InjectMocks
-  Application underTest = new Application();
+  private Application underTest;
 
   @BeforeEach
-  void initMocks() {
-    MockitoAnnotations.initMocks(this);
+  public void init() {
+    underTest = new Application();
+    MockitoAnnotations.openMocks(this);
   }
 
   @Test
   public void testHandleSignal() {
-    int signalCode = 1;
-    when(asFactory.getHandledSignal(signalCode)).thenReturn(signalAlgorithm);
-    when(signalAlgorithm.getAlgorithm()).thenReturn(algo);
+    int anySignalCode = 1;
+    when(factory.createAlgorithm(any(), anyInt())).thenReturn(algo);
 
-    underTest.handleSignal(signalCode);
-    Mockito.verify(asFactory).getHandledSignal(signalCode);
-    Mockito.verify(signalAlgorithm).getAlgorithm();
+    underTest.handleSignal(anySignalCode);
+    Mockito.verify(factory).createAlgorithm(any(Algo.class), anyInt());
     Mockito.verify(algo).doAlgo();
   }
 }

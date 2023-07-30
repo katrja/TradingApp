@@ -21,17 +21,17 @@ public class SignalAlgorithm3Test {
   @BeforeEach
   public void initMocks() {
     underTest = new SignalAlgorithm3();
-    MockitoAnnotations.initMocks(this);
+    MockitoAnnotations.openMocks(this);
   }
 
   @Test
   public void getSignal3() {
-    assertEquals(underTest.getHandledSignal(), 3);
+    assertEquals(underTest.getSignal(), 3);
   }
 
   @Test
   public void getAlgorithm3() {
-    underTest.getAlgorithm();
+    underTest.composeAlgorithm(algo);
     verify(algo).setAlgoParam(1, 90);
     verify(algo).setAlgoParam(2, 15);
     verify(algo).performCalc();

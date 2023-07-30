@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
 
 import org.example.algo.Algo;
-import org.example.trading.service.Application;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -22,17 +21,17 @@ public class SignalAlgorithm1Test {
   @BeforeEach
   public void initMocks() {
     underTest = new SignalAlgorithm1();
-    MockitoAnnotations.initMocks(this);
+    MockitoAnnotations.openMocks(this);
   }
 
   @Test
   public void getSignal1() {
-    assertEquals(underTest.getHandledSignal(), 1);
+    assertEquals(underTest.getSignal(), 1);
   }
 
   @Test
   public void getAlgorithm1() {
-    underTest.getAlgorithm();
+    underTest.composeAlgorithm(algo);
     verify(algo).setUp();
     verify(algo).setAlgoParam(1, 60);
     verify(algo).performCalc();

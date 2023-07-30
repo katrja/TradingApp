@@ -15,8 +15,7 @@ public class DefaultSignalAlgorithmTest {
   @Mock
   Algo algo;
 
-  @InjectMocks
-  SignalAlgorithm underTest;
+  DefaultSignalAlgorithm underTest;
 
   @BeforeEach
   public void initMocks() {
@@ -25,13 +24,8 @@ public class DefaultSignalAlgorithmTest {
   }
 
   @Test
-  public void getDefaultSignal() {
-    assertEquals(underTest.getHandledSignal(), 0);
-  }
-
-  @Test
-  public void getDefaultAlgorithm() {
-    underTest.getAlgorithm();
+  public void composeAlgorithm() {
+    underTest.composeAlgorithm(algo);
     verify(algo).cancelTrades();
   }
 }

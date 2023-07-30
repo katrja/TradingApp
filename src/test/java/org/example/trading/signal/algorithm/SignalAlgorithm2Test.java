@@ -21,17 +21,17 @@ public class SignalAlgorithm2Test {
   @BeforeEach
   public void initMocks() {
     underTest = new SignalAlgorithm2();
-    MockitoAnnotations.initMocks(this);
+    MockitoAnnotations.openMocks(this);
   }
 
   @Test
   public void getSignal2() {
-    assertEquals(underTest.getHandledSignal(), 2);
+    assertEquals(underTest.getSignal(), 2);
   }
 
   @Test
   public void getAlgorithm2() {
-    underTest.getAlgorithm();
+    underTest.composeAlgorithm(algo);
     verify(algo).reverse();
     verify(algo).setAlgoParam(1, 80);
     verify(algo).submitToMarket();

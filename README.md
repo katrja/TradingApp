@@ -26,7 +26,7 @@ For just running tests:
 ```
 $ mvn test
 ```
-For manual testing use Postman: `HTTP POST localhost:8084/signal` with integer value in request body.\
+For manual testing use Postman: `HTTP POST localhost:8086/signal` with integer value in request body.\
 Or by running curl comands in terminal. Examples:
 ```
 curl --request POST --location 'localhost:8084/signal' --header 'Content-Type: application/json' --data '1'
