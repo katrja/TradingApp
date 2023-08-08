@@ -1,7 +1,10 @@
 package org.example.trading.signal;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import org.example.trading.signal.algorithm.SignalAlgorithm;
 import org.example.trading.signal.algorithm.SignalAlgorithm1;
 import org.example.trading.signal.algorithm.SignalAlgorithm2;
@@ -15,12 +18,9 @@ public class SignalAlgorithmCollectionConfig {
   private final Map<Integer, SignalAlgorithm> signalAlgorithms = new HashMap<>();
 
   @Bean
-  public Map<Integer, SignalAlgorithm> getSignalAlgorithms()
+  public Map<Integer, SignalAlgorithm> getSignalAlgorithms(List<SignalAlgorithm> signals)
       throws DuplicatedSignalAlgorithmException {
-    addSignalAlgorithm(new SignalAlgorithm1());
-    addSignalAlgorithm(new SignalAlgorithm2());
-    addSignalAlgorithm(new SignalAlgorithm3());
-    return signalAlgorithms;
+    return signals.stream().collect(Collectors.toMap(SignalAlgorithm::getSignal, Function.identity()));
   }
 
   private void addSignalAlgorithm(SignalAlgorithm newAlgorithm)
